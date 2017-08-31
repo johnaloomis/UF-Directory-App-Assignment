@@ -12,7 +12,6 @@ var requestHandler = function(request, response) {
   if(u === '/listings')
   {
 	  response.writeHead(200);
-	  fs.readFile;
 	  response.write(JSON.stringify(listingData));
 	  response.end();
   }
@@ -30,18 +29,14 @@ var requestHandler = function(request, response) {
     http://stackoverflow.com/questions/17251553/nodejs-request-object-documentation
    */
 };
-// a server is created, but not started
-var server = http.createServer(requestHandler);
 
-// the server is now started, listening for requests on port 3000
-server.listen(port, function() {
-  //once the server is listening, this callback function is executed
-  console.log('Server listening on: http://127.0.0.1:' + port);
-});
-console.log('Is the server started?');
 
 fs.readFile('listings.json', 'utf8', function(err, data) {
 	
+	var server = http.createServer(requestHandler);
+	server.listen(port, function() {
+		console.log('Server listening on: http://127.0.0.1:' + port);
+		});
 	var fs = require("fs");
 	var contents = fs.readFileSync("listings.json");
 	listingData = JSON.parse(contents);
