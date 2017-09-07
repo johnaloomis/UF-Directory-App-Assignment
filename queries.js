@@ -26,7 +26,7 @@ var removeCable = function() {
       Listing.findOne({ 'code': 'CABL' }, function (err, listing) {
 	   if (err) return handleError(err);
 	   console.log(listing);
-	   listing.remove()
+	   listing.remove();
 });
 
 };
